@@ -4,6 +4,7 @@ import './globals.css'
 import SmoothScrollProvider from '@/components/layout/SmoothScrollProvider'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
+import { Analytics } from '@vercel/analytics/next'
 
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope' })
@@ -23,6 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main>{children}</main>
           <Footer />
         </SmoothScrollProvider>
+        <Analytics />
       </body>
     </html>
   )
