@@ -12,6 +12,9 @@ export interface LicenseClass {
   video?: string
   /** Optionales freigestelltes Bild im Showcase (fliegt ein/aus, dreht sich per Scroll) */
   showcaseImage?: string
+  /** Größenkorrektur fürs Showcase-Bild (Standard 1) — gleicht Leerraum im Quellbild aus,
+   *  damit alle Fahrzeuge optisch gleich groß wirken. Per Alpha-Kanal-Messung ermittelt. */
+  showcaseImageScale?: number
 }
 
 export const licenseClasses: LicenseClass[] = [
@@ -32,6 +35,7 @@ export const licenseClasses: LicenseClass[] = [
       'Motorräder bis 125 cm³ und 11 kW — perfekt für den Start auf zwei Rädern.',
     category: 'zweirad',
     showcaseImage: '/images/honda-cb125-no-bg.svg',
+    showcaseImageScale: 1.75,
   },
   {
     code: 'A2',
@@ -40,6 +44,7 @@ export const licenseClasses: LicenseClass[] = [
     description: 'Motorräder bis 35 kW — der nächste Schritt für ambitionierte Biker.',
     category: 'zweirad',
     showcaseImage: '/images/honda-cb500f-no-bg.svg',
+    showcaseImageScale: 1.55,
   },
   {
     code: 'A',
@@ -49,6 +54,7 @@ export const licenseClasses: LicenseClass[] = [
       'Alle Motorräder ohne Leistungsbeschränkung. *Mindestalter abhängig von Vorbesitz.',
     category: 'zweirad',
     showcaseImage: '/images/honda-cb650r-no-bg.svg',
+    showcaseImageScale: 1.4,
   },
   {
     code: 'B',

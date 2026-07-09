@@ -65,6 +65,7 @@ export default function LicenseClassesShowcase() {
               pinned={pinned}
               totalSlices={licenseClasses.length}
               sliceIndex={active}
+              visualScale={current.showcaseImageScale ?? 1}
               className="mx-auto mt-6 w-full max-w-sm lg:mx-0"
             />
           </AnimatePresence>

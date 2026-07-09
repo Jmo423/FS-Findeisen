@@ -12,13 +12,13 @@ import PricingCta from '@/components/home/PricingCta'
 import FinalCta from '@/components/home/FinalCta'
 
 const sections = [
-  { id: 'hero', label: 'Start' },
-  { id: 'warum', label: 'Warum Findeisen' },
-  { id: 'klassen', label: 'Führerscheinklassen' },
-  { id: 'team', label: 'Team' },
-  { id: 'bewertungen', label: 'Bewertungen' },
-  { id: 'preise', label: 'Preise' },
-  { id: 'kontakt', label: 'Kontakt' },
+  { id: 'hero', label: 'Start', theme: 'dark' as const },
+  { id: 'warum', label: 'Warum Findeisen', theme: 'light' as const },
+  { id: 'klassen', label: 'Führerscheinklassen', theme: 'dark' as const },
+  { id: 'team', label: 'Team', theme: 'light' as const },
+  { id: 'bewertungen', label: 'Bewertungen', theme: 'light' as const },
+  { id: 'preise', label: 'Preise', theme: 'dark' as const },
+  { id: 'kontakt', label: 'Kontakt', theme: 'light' as const },
 ]
 
 export default function HomePage() {

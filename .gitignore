@@ -29,4 +29,5 @@ yarn-error.log*
 
 # claude / superpowers local artifacts
 .claude/settings.local.json
+.claude/scheduled_tasks.lock
 .superpowers/

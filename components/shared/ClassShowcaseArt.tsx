@@ -13,6 +13,8 @@ interface ClassShowcaseArtProps {
   totalSlices: number
   /** Index der aktuell aktiven Klasse */
   sliceIndex: number
+  /** Größenkorrektur, damit Fahrzeuge mit viel Leerraum im Quellbild gleich groß wirken (Standard 1) */
+  visualScale?: number
 }
 
 const ENTER_END = 0.38
@@ -46,6 +48,7 @@ export default function ClassShowcaseArt({
   pinned,
   totalSlices,
   sliceIndex,
+  visualScale = 1,
 }: ClassShowcaseArtProps) {
   const opacity = useTransform(sceneProgress, (p) => {
     const local = localProgressOf(p, totalSlices, sliceIndex)
@@ -54,11 +57,12 @@ export default function ClassShowcaseArt({
     return 1
   })
 
-  // Wächst aus der Tiefe heraus: klein (fern) → normal (vorn), dann ruhig stehend
+  // Wächst aus der Tiefe heraus: klein (fern) → normal (vorn), dann ruhig stehend.
+  // visualScale gleicht unterschiedlich viel Leerraum in den Quellbildern aus.
   const scale = useTransform(sceneProgress, (p) => {
     const local = localProgressOf(p, totalSlices, sliceIndex)
-    if (local < ENTER_END) return 0.35 + 0.65 * easeOutCubic(local / ENTER_END)
-    return 1
+    if (local < ENTER_END) return visualScale * (0.35 + 0.65 * easeOutCubic(local / ENTER_END))
+    return visualScale
   })
 
   // Kein Einflug von der Seite — wächst mittig aus dem Hintergrund, gleitet erst beim Verlassen nach links
@@ -85,9 +89,9 @@ export default function ClassShowcaseArt({
         src={src}
         alt=""
         aria-hidden="true"
-        initial={{ opacity: 0, scale: 0.85 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.85 }}
+        initial={{ opacity: 0, scale: 0.85 * visualScale }}
+        animate={{ opacity: 1, scale: visualScale }}
+        exit={{ opacity: 0, scale: 0.85 * visualScale }}
         transition={{ duration: 0.4 }}
         className={className}
       />
