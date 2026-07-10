@@ -37,14 +37,14 @@ export default function Button({
 }: ButtonProps) {
   const reduced = useReducedMotion()
   const ref = useRef<HTMLDivElement>(null)
-  const x = useSpring(0, { stiffness: 300, damping: 20 })
-  const y = useSpring(0, { stiffness: 300, damping: 20 })
+  const x = useSpring(0, { stiffness: 120, damping: 26 })
+  const y = useSpring(0, { stiffness: 120, damping: 26 })
 
   function handleMouseMove(e: React.MouseEvent) {
     if (reduced || !ref.current) return
     const rect = ref.current.getBoundingClientRect()
-    x.set((e.clientX - rect.left - rect.width / 2) * 0.15)
-    y.set((e.clientY - rect.top - rect.height / 2) * 0.3)
+    x.set((e.clientX - rect.left - rect.width / 2) * 0.1)
+    y.set((e.clientY - rect.top - rect.height / 2) * 0.18)
   }
 
   function handleMouseLeave() {

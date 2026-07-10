@@ -88,6 +88,12 @@ export default function Hero() {
           className="absolute inset-0 bg-gradient-to-r from-brand-950/95 via-brand-950/80 to-brand-900/55"
         />
         <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-brand-950/70 via-transparent to-brand-950/30" />
+        {/* Vignette — dunkelt die Ränder rundum leicht ab, rahmt den Inhalt und stützt die Lesbarkeit zusätzlich zu den Verläufen */}
+        <div
+          aria-hidden
+          className="absolute inset-0"
+          style={{ boxShadow: 'inset 0 0 12rem rgba(8, 36, 63, 0.55)' }}
+        />
 
         {/* Dekorative Glow-Fläche */}
         <div
@@ -162,25 +168,6 @@ export default function Hero() {
             ))}
           </motion.aside>
         </motion.div>
-
-        {/* Scroll-Hinweis */}
-        {!reduced && (
-          <motion.div
-            aria-hidden
-            initial={{ opacity: 0 }}
-            animate={introDone ? { opacity: 1 } : {}}
-            transition={{ delay: 1.4 }}
-            className="absolute bottom-8 left-6 sm:left-10"
-          >
-            <motion.div
-              animate={{ y: [0, 10, 0] }}
-              transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
-              className="h-10 w-6 rounded-full border-2 border-white/40 p-1.5"
-            >
-              <div className="mx-auto h-2 w-1 rounded-full bg-white/70" />
-            </motion.div>
-          </motion.div>
-        )}
       </div>
     </section>
   )
