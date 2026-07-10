@@ -89,7 +89,7 @@ export default function Header() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 top-[60px] z-40 flex flex-col gap-2 bg-brand-950 px-8 py-10 text-white lg:hidden"
+            className="absolute inset-x-0 top-full z-40 flex h-[100dvh] flex-col gap-2 bg-brand-950 px-8 py-10 text-white lg:hidden"
             aria-label="Mobile Navigation"
           >
             {[{ label: 'Start', href: '/' }, ...navLinks, { label: 'Kontakt', href: '/kontakt' }].map(
