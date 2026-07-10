@@ -35,15 +35,12 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex max-w-content items-center justify-between px-6 py-4">
-        {/* Wortmarken-Logo — PLATZHALTER: durch echte Logodatei ersetzen, sobald verfügbar */}
-        <Link href="/" className="font-display text-lg font-extrabold tracking-tight" onClick={() => setMenuOpen(false)}>
-          {light ? (
-            <span>Fahrschule Findeisen</span>
-          ) : (
-            <span className="bg-gradient-to-r from-brand-700 via-brand-600 to-brand-400 bg-clip-text text-transparent">
-              Fahrschule Findeisen
-            </span>
-          )}
+        <Link href="/" onClick={() => setMenuOpen(false)}>
+          <img
+            src="/images/logo-findeisen.png"
+            alt="Fahrschule Findeisen"
+            className={`h-9 w-auto transition-[filter] duration-300 ${light ? 'brightness-0 invert' : ''}`}
+          />
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex" aria-label="Hauptnavigation">

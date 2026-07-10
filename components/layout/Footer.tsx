@@ -17,9 +17,8 @@ export default function Footer() {
     <footer className="bg-brand-950 px-6 py-16 text-white">
       <div className="mx-auto grid max-w-content gap-12 md:grid-cols-2 lg:grid-cols-4">
         <div>
-          {/* Wortmarke — PLATZHALTER, austauschbar gegen Logodatei */}
-          <p className="font-display text-lg font-extrabold">Fahrschule Findeisen</p>
-          <p className="mt-3 text-sm leading-relaxed text-white/60">
+          <img src="/images/logo-findeisen.png" alt="Fahrschule Findeisen" className="h-8 w-auto brightness-0 invert" />
+          <p className="mt-4 text-sm leading-relaxed text-white/60">
             Familienbetrieb im Erzgebirge — mit moderner Flotte und allen Führerscheinklassen
             von AM bis T.
           </p>

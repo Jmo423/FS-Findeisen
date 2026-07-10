@@ -62,14 +62,14 @@ export default function Hero() {
             exit={{ opacity: 0, transition: { duration: 0.5 } }}
             className="fixed inset-0 z-[80] flex cursor-default items-center justify-center bg-brand-950"
           >
-            <motion.span
+            <motion.img
+              src="/images/logo-findeisen.png"
+              alt="Fahrschule Findeisen"
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-5xl"
-            >
-              Fahrschule Findeisen
-            </motion.span>
+              className="h-auto w-64 brightness-0 invert sm:w-96"
+            />
           </motion.button>
         )}
       </AnimatePresence>
