@@ -55,6 +55,43 @@ function IconPin() {
   )
 }
 
+function IconStore() {
+  return (
+    <svg
+      className="h-5 w-5 shrink-0"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+    >
+      <rect x="6" y="2" width="12" height="20" rx="2" />
+      <line x1="10" y1="18" x2="14" y2="18" />
+    </svg>
+  )
+}
+
+function StoreBadge({ store, href }: { store: 'google' | 'apple'; href: string }) {
+  const label = store === 'google' ? 'Google Play' : 'App Store'
+  const eyebrow = store === 'google' ? 'Jetzt bei' : 'Laden im'
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="focus-ring flex items-center gap-2 rounded-lg bg-brand-950 px-3 py-2 text-white transition-colors hover:bg-brand-800"
+    >
+      <IconStore />
+      <span className="leading-tight">
+        <span className="block text-[10px] text-white/60">{eyebrow}</span>
+        <span className="block text-sm font-semibold">{label}</span>
+      </span>
+    </a>
+  )
+}
+
 const usps = [
   {
     title: 'Moderne Flotte',
@@ -72,7 +109,36 @@ const usps = [
     title: 'Zwei Standorte',
     text: 'Hauptsitz in Hormersdorf, Zweigstelle in Zwönitz — kurze Wege für die ganze Region.',
     Icon: IconPin,
-    span: 'md:col-span-2 md:col-start-2',
+    span: '',
+  },
+]
+
+const findeisenPlus = [
+  {
+    title: 'Die „Fahren Lernen“ App',
+    text: 'Hilft dir beim Lernen für die theoretische Prüfung — mit Fragen und prüfungsnahen Tests.',
+    badges: {
+      google: 'https://play.google.com/store/apps/details?id=de.fahrenlernen.app',
+      apple: 'https://apps.apple.com/de/app/fahren-lernen/id1568455846',
+    },
+  },
+  {
+    title: 'Drivers Cam-App',
+    text: 'Zeigt dir per Video typische Gefahrenstellen und knifflige Situationen im Prüfgebiet.',
+    badges: {
+      google: 'https://play.google.com/store/apps/details?id=de.evm.driverscampraxis',
+      apple: 'https://apps.apple.com/de/app/drivers-cam/id934464161',
+    },
+  },
+  {
+    title: 'Enge Verzahnung von Theorie & Praxis',
+    text: 'Bei uns lernst du NUR, was du wirklich brauchst (und der Prüfer wissen will).',
+    badges: null,
+  },
+  {
+    title: 'Nicht gelernt, gibt’s nicht!',
+    text: 'Prüfungsmanöver noch nie geübt? Nicht bei uns! Jeder Fahrschüler erhält seinen individuellen Lernplan.',
+    badges: null,
   },
 ]
 
@@ -117,6 +183,37 @@ export default function WhyUs() {
               <p className="mt-3 max-w-[65ch] leading-relaxed text-brand-950/70">{usp.text}</p>
             </motion.div>
           ))}
+
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-10%' }}
+            transition={{ duration: 0.7, delay: 0.12 * usps.length, ease: [0.22, 1, 0.36, 1] }}
+            className="glass-card p-8 transition-shadow duration-300 hover:shadow-card-hover md:col-span-2"
+          >
+            <h3 className="font-display text-xl font-bold text-brand-950">
+              Das besondere Findeisen-PLUS
+            </h3>
+            <div className="mt-6 grid gap-x-8 gap-y-6 sm:grid-cols-2">
+              {findeisenPlus.map((item) => (
+                <div key={item.title} className="flex gap-3">
+                  <span className="mt-0.5 font-display text-lg font-bold text-brand-500" aria-hidden>
+                    +
+                  </span>
+                  <div>
+                    <h4 className="font-display font-bold text-brand-950">{item.title}</h4>
+                    <p className="mt-1 leading-relaxed text-brand-950/70">{item.text}</p>
+                    {item.badges && (
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        <StoreBadge store="google" href={item.badges.google} />
+                        <StoreBadge store="apple" href={item.badges.apple} />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
 
