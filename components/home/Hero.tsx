@@ -62,19 +62,33 @@ export default function Hero() {
             exit={{ opacity: 0, transition: { duration: 0.5 } }}
             className="fixed inset-0 z-[80] flex cursor-default items-center justify-center bg-brand-950"
           >
-            <motion.span
+            <motion.img
+              src="/images/logo-findeisen.png"
+              alt="Fahrschule Findeisen"
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
-              className="font-display text-3xl font-extrabold tracking-tight text-white sm:text-5xl"
-            >
-              Fahrschule Findeisen
-            </motion.span>
+              className="h-auto w-64 brightness-0 invert sm:w-96"
+            />
           </motion.button>
         )}
       </AnimatePresence>
 
-      <div className="sticky top-0 flex h-[100dvh] items-center overflow-hidden bg-gradient-to-br from-brand-950 via-brand-900 to-brand-600">
+      <div className="sticky top-0 flex h-[100dvh] items-center overflow-hidden bg-brand-950">
+        {/* Team & Flotte — sehr breites Panoramafoto, daher eigener Bildausschnitt für Mobile */}
+        <img
+          src="/images/flotte-2025.jpg"
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 h-full w-full object-cover object-[center_75%] lg:object-[center_45%]"
+        />
+        {/* Navy-Verlauf als Scrim für Textlesbarkeit, links kräftiger als rechts */}
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-gradient-to-r from-brand-950/95 via-brand-950/80 to-brand-900/55"
+        />
+        <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-brand-950/70 via-transparent to-brand-950/30" />
+
         {/* Dekorative Glow-Fläche */}
         <div
           aria-hidden
